@@ -9,5 +9,5 @@ urlpatterns = [
     path('api/upload/', UploadFileAPIView.as_view(), name='api_upload_file'),
     path('api/files/', UploadFileAPIView.as_view(), name='api_get_files'),
     path('files/', get_files, name='get_files'),
-    path('csv/', view_csv_data, name='csv')
+    path('filter/', view_csv_data, name='filter_csv')
 ]
