@@ -46,11 +46,13 @@ def get_csv_data(csv_file_path, filters=None, sort_columns=None, columns=None):
     df = pd.read_csv(csv_file_path)
 
     if filters:
-        for filter_str in filters:
-            df = df.query(filter_str)
+        non_empty_filters = [f for f in filters if f.strip()]
+        if non_empty_filters:
+            filter_expr = ' & '.join(non_empty_filters)
+            df = df.query(filter_expr)
 
     if sort_columns:
-        df.sort_values(by=sort_columns, inplace=True)
+        df = df.sort_values(by=sort_columns)
 
     if columns:
         df = df[columns]
@@ -59,14 +61,11 @@ def get_csv_data(csv_file_path, filters=None, sort_columns=None, columns=None):
 
 
 def view_csv_data(request):
-    csv_file_path = ''
-    filters = [""]
-    sort_columns = [""]
-    columns = [""]
+    csv_file_path = 'media/uploads/sample4.csv'
 
-    df = get_csv_data(csv_file_path, filters=filters, sort_columns=sort_columns, columns=columns)
+    df = get_csv_data(csv_file_path)
 
-    return render(request, 'csv_data.html', {'csv_data': df.to_html()})
+    return render(request, 'servece/csv_data.html', {'csv_data': df.to_html()})
 
 
 class UploadFileAPIView(APIView):
