@@ -1,0 +1,2 @@
+# HTTP_service_for_working_with_imported_data
+This project is technical specification
