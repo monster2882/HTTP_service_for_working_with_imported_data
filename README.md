@@ -1,11 +1,26 @@
 # HTTP_service_for_working_with_imported_data
-This project is technical specification
+Документация по API для загрузки файлов (CSV)
+Описание:
 
-Tasks:
-Data loading in csv format (e.g. datasets with Kaggle) should be implemented. The structure of the files is unknown and may vary from file to file.
+Данная API позволяет загружать файлы формата CSV (Comma-Separated Values) на сервер. Загруженные файлы сохраняются в базе данных вместе с указанным пользователем названием файла.
 
-In addition to downloading files, you need to implement the following functionality:
+Пути API:
 
-• Getting a list of files with column information
+POST /api/upload/
 
-• Ability to get data from a specific file with optional filtering and sorting by one or more columns
+Описание: Загрузить файл на сервер.
+
+Параметры запроса:
+
+file_name (строка) - Название файла (необязательно).
+file (файл) - Файл формата CSV для загрузки.
+Ответы:
+
+Код состояния HTTP 201 Created: Файл успешно загружен.
+Код состояния HTTP 400 Bad Request: Ошибка валидации, неверный формат файла
+
+Замечания:
+
+При успешной загрузке файла, он сохраняется на сервере в папке uploads/ с уникальным именем.
+Для успешной загрузки файла, API требует использование ключа 'file' для передачи файла.
+При неуспешной загрузке файла, API вернет ошибку с соответствующим сообщением.
