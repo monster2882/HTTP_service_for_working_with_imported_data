@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSV File Data</title>
+</head>
+<body>
+    <h1>CSV File Data</h1>
+    <table>
+        <tr>
+            <th>File Name</th>
+            <th>File</th>
+            <th>Uploaded At</th>
+        </tr>
+        {% for file_info in file_data %}
+            <tr>
+                <td>{{ file_info.file_name }}</td>
+                <td>{{ file_info.file }}</td>
+                <td>{{ file_info.uploaded_at }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

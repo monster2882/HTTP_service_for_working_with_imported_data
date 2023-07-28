@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Список файлов</title>
+</head>
+<body>
+    <h1>Список файлов</h1>
+    <ul>
+        {% for file in files %}
+            <li>
+                <strong>Название файла:</strong> {{ file.file_name }}<br>
+                <strong>Ссылка на файл:</strong> <a href="{{ file.file }}">{{ file.file_name }}</a><br>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+<style>
+    li {
+        margin-bottom: 20px;
+    }
+</style>
